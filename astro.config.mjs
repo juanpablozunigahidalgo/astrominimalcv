@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.zunigajp.com',
+  base: '/',
   i18n: {
     defaultLocale: 'english',
     locales: ['english', 'spanish', 'italian', 'latin', 'swedish'],
