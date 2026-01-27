@@ -1,3 +1,18 @@
+# Astro Minimal CV
+
+Hace algunos meses hice mi sitio web con el framework Vue. Pero despues experimete usar Astro y me encanto. Por lo que hice este CV-Website en Astro.
+Astro facilita la creación de sitios estáticos, lo que significa que puedes hospedar tu sitio en GitHub Pages sin necesidad de un servidor. Además, Astro es muy rápido y fácil de usar.
+Por que el contenido está en Markdown, es muy fácil de editar y mantener. Además, puedes agregar más páginas y secciones fácilmente. 
+Entonces. Si quieres modificar el contenido, solo necesitas editar los archivos Markdown en la carpeta `src/content/`. Lo que te ahorra tiempo. Por otra parte, ya que se installa el deployment en github pages, solo necesitas hacer un push a la branch `gh-pages` y tu sitio estará en línea. 
+Es realmente muy muy practico y me ha gustado mucho. Si quieres ver el sitio, puedes visitar https://zunigajp.com/ 
+Y si quieres ver el código, puedes visitar https://github.com/juanpablozunigahidalgo/astrominimalcv. 
+Por favor siente libre de usarlo y modificarlo. Si tienes alguna sugerencia, no dudes en abrir un issue o un pull request. O mandarme un email. Por otra parte. Lo desarrolle con la herramienta TRAE AI (que es gratis) y me ayudo mucho. La velocidad de desarrollo fue muy alta. Hice el sitio en una cosa de horas. Algunos prompts. Pero sinceramente TRAE es genial. 
+Sin saber quien eres. Te mando un abrazo! . 
+
+
+
+
+# Instrucciones Standard
 # Astro Starter Kit: Minimal
 
 ```sh
