@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('general');
+  return pages.map(page => ({
+    params: { lang: page.slug },
+    props: { page },
+  }));
+}
+---
+
+<Layout title="Minimalista">
+    <!-- Landing page content is handled by the Layout sidebar/navigation -->
+</Layout>

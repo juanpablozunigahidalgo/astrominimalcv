@@ -1,0 +1,109 @@
+---
+import CvLayout from '../../layouts/CvLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('cv');
+  return pages.map(page => ({
+    params: { lang: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { data } = page;
+const cv = data;
+---
+
+<CvLayout title={cv.name}>
+  <div class="cv-content">
+      <h3 class="heading">{cv.cvheadings.abstract}</h3>
+      <p>{cv.summary}</p>
+      
+      <h3 class="heading">{cv.cvheadings.professionalexperience}</h3>
+      <ul class="no-bullets">
+        {cv.professionalExperience.map((experience) => (
+          <li>
+            <p style="font-weight:550; color: #36454F; padding-bottom: 1px;">{experience.title}</p>
+            <p>{experience.company} ({experience.startDate.year} - {experience.endDate.year})</p>
+            <p>{experience.description}</p>
+            <p style="padding-bottom: 5px;">Tools: {experience.tools.join(", ")}</p>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="heading">{cv.cvheadings.formaleducation}</h3>
+      <ul class="no-bullets">
+        {cv.formalEducation.map((education) => (
+          <li>
+            <p>{education.degree}</p>
+            <p>{education.university} ({education.startDate.year} - {education.endDate.year})</p>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="heading">{cv.cvheadings.coursesandcertifications}</h3>
+      <ul class="no-bullets">
+        {cv.coursesAndCertifications.map((course) => (
+          <li>
+            <p>{course.course}</p>
+            <p>{course.provider} ({course.startDate.year} - {course.endDate.year})</p>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="heading">{cv.cvheadings.competenceoverview}</h3>
+      <ul class="competence-overview">
+        {Object.entries(cv.competenceOverview).map(([key, value]) => (
+          <li>{key}: {value}</li>
+        ))}
+      </ul>
+
+      <h3 class="heading">{cv.cvheadings.skills}</h3>
+      <ul class="competence-overview">
+        {cv.skills.map((skill) => (
+          <li>{skill}</li>
+        ))}
+      </ul>
+
+      <h3 class="heading">{cv.cvheadings.personalinformation}</h3>
+      <p>Driver's License: {cv.personalInformation.driverLicense}</p>
+      <p>Nationality: {cv.personalInformation.nationality.join(", ")}</p>
+      <p>Languages: {cv.personalInformation.languages.join(", ")}</p>
+  </div>
+</CvLayout>
+
+<style>
+.cv-content {
+  color: black;
+  font-size: 13px;
+  text-rendering: optimizeLegibility;
+}
+.cv-content p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  margin-bottom: 8px;
+}
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+.competence-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding-left: 0;
+}
+.competence-overview li {
+    background: #f4f4f4;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+.heading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+</style>

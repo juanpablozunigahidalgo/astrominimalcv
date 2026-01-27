@@ -1,0 +1,42 @@
+---
+import OthersLayout from '../../layouts/OthersLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('general');
+  return pages.map(page => ({
+    params: { lang: page.slug },
+    props: { page },
+  }));
+}
+
+const { lang } = Astro.params;
+const generalEntry = Astro.props.page;
+const cvEntry = await getEntry('cv', lang);
+
+const projectsTitle = cvEntry.data.projects;
+const projectsList = generalEntry.data.projectsList;
+---
+
+<OthersLayout title="Others">
+  <ul class="links-list" style="list-style: none; padding: 0; margin: 0;">
+    {projectsList.map((project) => (
+      <li>
+        <a href={project.url} target="_blank">{project.name}</a>
+      </li>
+    ))}
+  </ul>
+</OthersLayout>
+
+<style>
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.links-list li {
+  margin-bottom: 6px;
+}
+</style>

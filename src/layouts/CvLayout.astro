@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Minimalist CV" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="cv-only-layout">
+      <slot />
+    </main>
+  </body>
+  </html>
+
+<style is:global>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: Consolas, 'Courier New', monospace;
+    color: black;
+    font-size: 13px;
+  }
+</style>
+
+<style>
+  .cv-only-layout {
+    max-width: 1000px;
+    margin: 110px auto;
+    padding: 0 clamp(24px, 6vw, 120px);
+    line-height: 1.6;
+    text-align: left;
+  }
+</style>

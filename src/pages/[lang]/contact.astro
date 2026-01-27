@@ -1,0 +1,34 @@
+---
+import ContactLayout from '../../layouts/ContactLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('general');
+  return pages.map(page => ({
+    params: { lang: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { contactdata } = page.data;
+---
+
+<ContactLayout title="Contact">
+  <div class="contact-content">
+      <p>{contactdata.email}</p>
+      <p><a href={contactdata.linkedin} target="_blank">{contactdata.linkedin}</a></p>
+      <p><a href={contactdata.github} target="_blank">{contactdata.github}</a></p>
+  </div>
+</ContactLayout>
+
+<style>
+.contact-content {
+  color: black;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.contact-content p {
+    margin-bottom: 6px;
+}
+</style>
