@@ -26,7 +26,7 @@
   "skills": [
     "JavaScript",
     "TypeScript",
-    "Python",
+    "Python (FastAPI)",
     "SQL",
     "HTML5",
     "CSS",
@@ -41,15 +41,23 @@
     "Oracle Cloud Infrastructure (OCI)",
     "Oracle Autonomous Database",
     "Azure",
-    "Google Cloud Platform",
+    "Google Cloud Platform (GCP)",
     "Amazon Web Services (AWS)",
-    "Google AI Studio",
-    "OpenAI API",
-    "Vertex AI",
-    "Langchain",
-    "Trae",
-    "Open WebUI",
+    "Amazon Bedrock (Agents)",
+    "AWS Lambda (Serverless)",
+    "Amazon DynamoDB",
+    "Amazon S3",
+    "AWS IAM Policies",
+    "AWS Bedrock Runtime",
     "Generative AI (OCI, Gemini, OpenAI)",
+    "LLM Integration & Fine-tuning",
+    "RAG (Retrieval-Augmented Generation)",
+    "Langchain",
+    "Trae AI",
+    "Open WebUI",
+    "Vertex AI",
+    "Google AI Studio",
+    "Gemini AI",
     "Power BI (DAX)",
     "Power Automate",
     "Postman",
@@ -60,7 +68,12 @@
     "MUI Libraries",
     "Figma",
     "Auth0",
-    "SAP"
+    "SAP",
+    "FlutterFlow",
+    "Supabase",
+    "Astro (Islands Architecture)",
+    "MLflow",
+    "Docker"
   ],
   "formalEducation": [
     {
@@ -319,6 +332,21 @@
         "monthName": "Maius"
       },
       "duration": 1
+    },
+    {
+      "course": "AWS Cloud Practitioner Essentials",
+      "provider": "Amazon Web Services (AWS)",
+      "startDate": {
+        "year": 2026,
+        "month": 1,
+        "monthName": "Januari"
+      },
+      "endDate": {
+        "year": 2026,
+        "month": 1,
+        "monthName": "Januari"
+      },
+      "duration": 1
     }
   ],
   "personalInformation": {
@@ -335,6 +363,43 @@
     ]
   },
   "professionalExperience": [
+    {
+      "title": "Ingeniarius Intellegentiae Artificialis et Architectus Senior Solutionum. Creativus.",
+      "company": "Experimentar.eu",
+      "location": "Gothenburg-Remote",
+      "startDate": {
+        "year": 2025,
+        "month": 7,
+        "monthName": "July"
+      },
+      "endDate": {
+        "year": 2026,
+        "month": 11,
+        "monthName": "Present"
+      },
+      "duration": 8,
+      "description": "Laboratorium intellegentia artificiali rectum institui, ad exemplaria solutionum gradus negotialis prototypanda destinatum, technologiis nubilis et intellegentia artificiali generativa recentissima utens. Inter praecipua est Agens Argentarius pro Danske Bank, ad novos usuarios sine difficultate accipiendos et ad quaestiones fenebres solvendas designatus. Haec solutio fluxu verificationis omnino 'serverless' et 'stateless' utitur, qui usuarios per agnitionem imaginis diplomatum inscribit, per Amazon Bedrock et AWS Lambda ordinatus. Repositio in Amazon S3 et Dynamo DB. Omnia sub legibus AWS IAM iuribus minimis custodiuntur. Seriem LLMOps pro Redcare Pharmacy per MLflow et Prefect struxi, machinam praevisionis mercatoriae pro IKEA per LSTM et Astro, et compagem contra fraudes AWS. Nunc Gettashower elaboro, applicationem mobilem in FlutterFlow et Supabase fundatam, quae usuarios urbanos cum nodis reficiendi et capsulis custodibus in urbibus frequentissimis per totum orbem coniungit.",
+      "tools": [
+        "Amazon Bedrock (Agents)",
+        "AWS Lambda (Serverless)",
+        "Amazon DynamoDB",
+        "Amazon S3",
+        "AWS IAM Policies",
+        "AWS Bedrock Runtime",
+        "FlutterFlow",
+        "Supabase",
+        "React",
+        "OpenAI-API",
+        "Typescript",
+        "Gemini AI",
+        "Google Cloud",
+        "Astro (Islands Architecture)",
+        "TypeScript",
+        "Python (FastAPI)",
+        "MLflow",
+        "Docker"
+      ]
+    },
     {
       "title": "Artificial Intelligence Services Specialist.",
       "company": "Oracle EU",

@@ -26,7 +26,7 @@
   "skills": [
     "JavaScript",
     "TypeScript",
-    "Python",
+    "Python (FastAPI)",
     "SQL",
     "HTML5",
     "CSS",
@@ -41,15 +41,23 @@
     "Oracle Cloud Infrastructure (OCI)",
     "Oracle Autonomous Database",
     "Azure",
-    "Google Cloud Platform",
+    "Google Cloud Platform (GCP)",
     "Amazon Web Services (AWS)",
-    "Google AI Studio",
-    "OpenAI API",
-    "Vertex AI",
-    "Langchain",
-    "Trae",
-    "Open WebUI",
+    "Amazon Bedrock (Agents)",
+    "AWS Lambda (Serverless)",
+    "Amazon DynamoDB",
+    "Amazon S3",
+    "AWS IAM Policies",
+    "AWS Bedrock Runtime",
     "Generative AI (OCI, Gemini, OpenAI)",
+    "LLM Integration & Fine-tuning",
+    "RAG (Retrieval-Augmented Generation)",
+    "Langchain",
+    "Trae AI",
+    "Open WebUI",
+    "Vertex AI",
+    "Google AI Studio",
+    "Gemini AI",
     "Power BI (DAX)",
     "Power Automate",
     "Postman",
@@ -60,7 +68,12 @@
     "MUI Libraries",
     "Figma",
     "Auth0",
-    "SAP"
+    "SAP",
+    "FlutterFlow",
+    "Supabase",
+    "Astro (Islands Architecture)",
+    "MLflow",
+    "Docker"
   ],
   "formalEducation": [
     {
@@ -319,6 +332,21 @@
         "monthName": "May"
       },
       "duration": 1
+    },
+    {
+      "course": "AWS Cloud Practitioner Essentials",
+      "provider": "Amazon Web Services (AWS)",
+      "startDate": {
+        "year": 2026,
+        "month": 1,
+        "monthName": "January"
+      },
+      "endDate": {
+        "year": 2026,
+        "month": 1,
+        "monthName": "January"
+      },
+      "duration": 1
     }
   ],
   "personalInformation": {
@@ -335,6 +363,44 @@
     ]
   },
   "professionalExperience": [
+    {
+      "title": "AI Engineer & Senior Solutions Architect. Creative.",
+      "company": "Experimentar.eu",
+      "location": "Gothenburg-Remote",
+      "startDate": {
+        "year": 2025,
+        "month": 7,
+        "monthName": "July"
+      },
+      "endDate": {
+        "year": 2026,
+        "month": 11,
+        "monthName": "Present"
+      },
+      "duration": 8,
+      "description": "Initiated an AI driven laboratory dedicated to prototyping enterprise-grade solutions using cutting-edge cloud and generative AI technologies. Highlights include a web-based AI Banking Agent for Danske Bank, designed to onboard users with zero friction and handle complex loan inquiries. This solution utilizes a fully serverless, stateless verification flow that registers users via ID image recognition, orchestrated through Amazon Bedrock Agents and AWS Lambda. Storage on Amazon S3 and Dynamo DB. All secured under least-privilege AWS IAM policies.
+      Engineered an LLMOps pipeline for Redcare Pharmacy using MLflow and Prefect. A retail forecasting engine for IKEA powered by LSTM and Astro, and a robust AWS Fraud Detection framework. Currently, I am developing Gettashower, a FlutterFlow and Supabase-based mobile application that connects urban users with refreshing nodes and lockers in high-traffic cities globally.",
+      "tools": [
+        "Amazon Bedrock (Agents)",
+        "AWS Lambda (Serverless)",
+        "Amazon DynamoDB",
+        "Amazon S3",
+        "AWS IAM Policies",
+        "AWS Bedrock Runtime",
+        "FlutterFlow",
+        "Supabase",
+        "React",
+        "OpenAI-API",
+        "Typescript",
+        "Gemini AI",
+        "Google Cloud",
+        "Astro (Islands Architecture)",
+        "TypeScript",
+        "Python (FastAPI)",
+        "MLflow",
+        "Docker"
+      ]
+    },
     {
       "title": "Generative AI Services Specialist",
       "company": "Oracle EU",
