@@ -69,7 +69,7 @@
     "Figma",
     "Auth0",
     "SAP",
-    "FlutterFlow",
+    "Flutter",
     "Supabase",
     "Astro (Islands Architecture)",
     "MLflow",
@@ -339,12 +339,12 @@
       "startDate": {
         "year": 2026,
         "month": 1,
-        "monthName": "Januari"
+        "monthName": "Ianuarius"
       },
       "endDate": {
         "year": 2026,
         "month": 1,
-        "monthName": "Januari"
+        "monthName": "Ianuarius"
       },
       "duration": 1
     }
@@ -378,7 +378,7 @@
         "monthName": "Present"
       },
       "duration": 8,
-      "description": "Laboratorium intellegentia artificiali rectum institui, ad exemplaria solutionum gradus negotialis prototypanda destinatum, technologiis nubilis et intellegentia artificiali generativa recentissima utens. Inter praecipua est Agens Argentarius pro Danske Bank, ad novos usuarios sine difficultate accipiendos et ad quaestiones fenebres solvendas designatus. Haec solutio fluxu verificationis omnino 'serverless' et 'stateless' utitur, qui usuarios per agnitionem imaginis diplomatum inscribit, per Amazon Bedrock et AWS Lambda ordinatus. Repositio in Amazon S3 et Dynamo DB. Omnia sub legibus AWS IAM iuribus minimis custodiuntur. Seriem LLMOps pro Redcare Pharmacy per MLflow et Prefect struxi, machinam praevisionis mercatoriae pro IKEA per LSTM et Astro, et compagem contra fraudes AWS. Nunc Gettashower elaboro, applicationem mobilem in FlutterFlow et Supabase fundatam, quae usuarios urbanos cum nodis reficiendi et capsulis custodibus in urbibus frequentissimis per totum orbem coniungit.",
+      "description": "Laboratorium intellegentia artificiali rectum institui, ad exemplaria solutionum gradus negotialis prototypanda destinatum, technologiis nubilis et intellegentia artificiali generativa recentissima utens. Inter praecipua est Agens Argentarius pro Danske Bank, ad novos usuarios sine difficultate accipiendos et ad quaestiones fenebres solvendas designatus. Haec solutio fluxu verificationis omnino 'serverless' et 'stateless' utitur, qui usuarios per agnitionem imaginis diplomatum inscribit, per Amazon Bedrock et AWS Lambda ordinatus. Repositio in Amazon S3 et Dynamo DB. Omnia sub legibus AWS IAM iuribus minimis custodiuntur. Seriem LLMOps pro Redcare Pharmacy per MLflow et Prefect struxi, machinam praevisionis mercatoriae pro IKEA per LSTM et Astro, et compagem contra fraudes AWS. Nunc Gettashower elaboro, applicationem mobilem in Flutter et Supabase fundatam, quae usuarios urbanos cum nodis reficiendi et capsulis custodibus in urbibus frequentissimis per totum orbem coniungit.",
       "tools": [
         "Amazon Bedrock (Agents)",
         "AWS Lambda (Serverless)",
@@ -386,7 +386,7 @@
         "Amazon S3",
         "AWS IAM Policies",
         "AWS Bedrock Runtime",
-        "FlutterFlow",
+        "Flutter",
         "Supabase",
         "React",
         "OpenAI-API",

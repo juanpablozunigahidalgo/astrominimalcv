@@ -69,7 +69,7 @@
     "Figma",
     "Auth0",
     "SAP",
-    "FlutterFlow",
+    "Flutter",
     "Supabase",
     "Astro (Islands Architecture)",
     "MLflow",
@@ -339,12 +339,12 @@
       "startDate": {
         "year": 2026,
         "month": 1,
-        "monthName": "Januari"
+        "monthName": "Enero"
       },
       "endDate": {
         "year": 2026,
         "month": 1,
-        "monthName": "Januari"
+        "monthName": "Enero"
       },
       "duration": 1
     }
@@ -378,7 +378,7 @@
         "monthName": "Present"
       },
       "duration": 8,
-      "description": "Inicié un laboratorio impulsado por IA dedicado al prototipado de soluciones de nivel empresarial utilizando tecnologías de vanguardia en la nube e IA generativa. Los hitos incluyen un Agente Bancario de IA basado en web para Danske Bank, diseñado para dar de alta a usuarios sin fricciones y gestionar consultas de préstamos complejas. Esta solución utiliza un flujo de verificación totalmente serverless y sin estado que registra a los usuarios mediante reconocimiento de imagen de ID, orquestado a través de Amazon Bedrock Agents y AWS Lambda. Almacenamiento en Amazon S3 y Dynamo DB. Todo asegurado bajo políticas de privilegios mínimos de AWS IAM. Desarrollé un pipeline de LLMOps para Redcare Pharmacy utilizando MLflow y Prefect, un motor de previsión minorista para IKEA impulsado por LSTM y Astro, y un robusto marco de detección de fraude en AWS. Actualmente, estoy desarrollando Gettashower, una aplicación móvil basada en FlutterFlow y Supabase que conecta a usuarios urbanos con 'nodos de refresco' y casilleros en ciudades de alto tráfico a escala global.",
+      "description": "Inicié un laboratorio impulsado por IA dedicado al prototipado de soluciones de nivel empresarial utilizando tecnologías de vanguardia en la nube e IA generativa. Los hitos incluyen un Agente Bancario de IA basado en web para Danske Bank, diseñado para dar de alta a usuarios sin fricciones y gestionar consultas de préstamos complejas. Esta solución utiliza un flujo de verificación totalmente serverless y sin estado que registra a los usuarios mediante reconocimiento de imagen de ID, orquestado a través de Amazon Bedrock Agents y AWS Lambda. Almacenamiento en Amazon S3 y Dynamo DB. Todo asegurado bajo políticas de privilegios mínimos de AWS IAM. Desarrollé un pipeline de LLMOps para Redcare Pharmacy utilizando MLflow y Prefect, un motor de previsión minorista para IKEA impulsado por LSTM y Astro, y un robusto marco de detección de fraude en AWS. Actualmente, estoy desarrollando Gettashower, una aplicación móvil basada en Flutter y Supabase que conecta a usuarios urbanos con 'nodos de refresco' y casilleros en ciudades de alto tráfico a escala global.",
       "tools": [
         "Amazon Bedrock (Agents)",
         "AWS Lambda (Serverless)",
@@ -386,7 +386,7 @@
         "Amazon S3",
         "AWS IAM Policies",
         "AWS Bedrock Runtime",
-        "FlutterFlow",
+        "Flutter",
         "Supabase",
         "React",
         "OpenAI-API",

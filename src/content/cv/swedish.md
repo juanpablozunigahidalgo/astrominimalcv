@@ -69,7 +69,7 @@
     "Figma",
     "Auth0",
     "SAP",
-    "FlutterFlow",
+    "Flutter",
     "Supabase",
     "Astro (Islands Architecture)",
     "MLflow",
@@ -378,7 +378,7 @@
         "monthName": "Present"
       },
       "duration": 8,
-      "description": "Initierade ett AI-drivet laboratorium dedikerat till att prototypa lösningar på företagsnivå med hjälp av banbrytande molnteknik och generativ AI. Höjdpunkter inkluderar en webbaserad AI-bankagent för Danske Bank, designad för att onboarda användare friktionsfritt och hantera komplexa låneförfrågningar. Denna lösning använder ett helt serverlöst och tillståndslöst (stateless) verifieringsflöde som registrerar användare via ID-bildigenkänning, orkestrerat genom Amazon Bedrock Agents och AWS Lambda. Lagring på Amazon S3 och Dynamo DB. Allt säkrat under AWS IAM-policyer med minsta privilegium. Utvecklade en LLMOps-pipeline för Redcare Pharmacy med MLflow och Prefect, en prognosmotor för detaljhandeln för IKEA driven av LSTM och Astro, samt ett robust ramverk för bedrägeribekämpning i AWS. För närvarande utvecklar jag Gettashower, en FlutterFlow- och Supabase-baserad mobilapplikation som kopplar samman stadsanvändare med 'uppfriskningsnoder' och förvaringsboxar i tätbefolkade städer världen över.",
+      "description": "Initierade ett AI-drivet laboratorium dedikerat till att prototypa lösningar på företagsnivå med hjälp av banbrytande molnteknik och generativ AI. Höjdpunkter inkluderar en webbaserad AI-bankagent för Danske Bank, designad för att onboarda användare friktionsfritt och hantera komplexa låneförfrågningar. Denna lösning använder ett helt serverlöst och tillståndslöst (stateless) verifieringsflöde som registrerar användare via ID-bildigenkänning, orkestrerat genom Amazon Bedrock Agents och AWS Lambda. Lagring på Amazon S3 och Dynamo DB. Allt säkrat under AWS IAM-policyer med minsta privilegium. Utvecklade en LLMOps-pipeline för Redcare Pharmacy med MLflow och Prefect, en prognosmotor för detaljhandeln för IKEA driven av LSTM och Astro, samt ett robust ramverk för bedrägeribekämpning i AWS. För närvarande utvecklar jag Gettashower, en Flutter- och Supabase-baserad mobilapplikation som kopplar samman stadsanvändare med 'uppfriskningsnoder' och förvaringsboxar i tätbefolkade städer världen över.",
       "tools": [
         "Amazon Bedrock (Agents)",
         "AWS Lambda (Serverless)",
@@ -386,7 +386,7 @@
         "Amazon S3",
         "AWS IAM Policies",
         "AWS Bedrock Runtime",
-        "FlutterFlow",
+        "Flutter",
         "Supabase",
         "React",
         "OpenAI-API",
