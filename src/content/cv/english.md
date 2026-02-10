@@ -69,7 +69,7 @@
     "Figma",
     "Auth0",
     "SAP",
-    "FlutterFlow",
+    "Flutter",
     "Supabase",
     "Astro (Islands Architecture)",
     "MLflow",
@@ -379,7 +379,7 @@
       },
       "duration": 8,
       "description": "Initiated an AI driven laboratory dedicated to prototyping enterprise-grade solutions using cutting-edge cloud and generative AI technologies. Highlights include a web-based AI Banking Agent for Danske Bank, designed to onboard users with zero friction and handle complex loan inquiries. This solution utilizes a fully serverless, stateless verification flow that registers users via ID image recognition, orchestrated through Amazon Bedrock Agents and AWS Lambda. Storage on Amazon S3 and Dynamo DB. All secured under least-privilege AWS IAM policies.
-      Engineered an LLMOps pipeline for Redcare Pharmacy using MLflow and Prefect. A retail forecasting engine for IKEA powered by LSTM and Astro, and a robust AWS Fraud Detection framework. Currently, I am developing Gettashower, a FlutterFlow and Supabase-based mobile application that connects urban users with refreshing nodes and lockers in high-traffic cities globally.",
+      Engineered an LLMOps pipeline for Redcare Pharmacy using MLflow and Prefect. A retail forecasting engine for IKEA powered by LSTM and Astro, and a robust AWS Fraud Detection framework. Currently, I am developing Gettashower, a Flutter Dart and Supabase-based mobile application that connects urban users with refreshing nodes and lockers in high-traffic cities globally.",
       "tools": [
         "Amazon Bedrock (Agents)",
         "AWS Lambda (Serverless)",
@@ -387,7 +387,7 @@
         "Amazon S3",
         "AWS IAM Policies",
         "AWS Bedrock Runtime",
-        "FlutterFlow",
+        "Flutter",
         "Supabase",
         "React",
         "OpenAI-API",
