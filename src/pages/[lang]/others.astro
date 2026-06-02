@@ -1,27 +1,13 @@
 ---
-import OthersLayout from '../../layouts/OthersLayout.astro';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const pages = await getCollection('general');
-  return pages.map(page => ({
+  return pages.map((page) => ({
     params: { lang: page.slug },
-    props: { page },
   }));
 }
 
-const { lang } = Astro.params;
-const generalEntry = Astro.props.page;
-const cvEntry = await getEntry('cv', lang);
-
-const projectsTitle = cvEntry.data.projects;
-const projectsList = generalEntry.data.projectsList;
+const basePrefix = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+return Astro.redirect(`${basePrefix}/others`);
 ---
-
-<OthersLayout title="Others">
-  {projectsList.map((project) => (
-    <li>
-      <a href={project.url} target="_blank">{project.name}</a>
-    </li>
-  ))}
-</OthersLayout>

@@ -17,28 +17,6 @@
     "projects": "Projects",
     "pinterest": "Pinterest",
     "freelance": "Getquote"
-  },
-  "projectsList": [
-    {
-      "name": "Pinterest",
-      "url": "https://www.pinterest.se/juanpablozunigahidalgo/"
-    },
-    {
-      "name": "Upwork",
-      "url": "https://www.upwork.com/o/profiles/users/~014dc3930a8604d292/"
-    },
-    {
-      "name": "Linkedin",
-      "url": "https://se.linkedin.com/in/jpzuniga/en"
-    },
-    {
-      "name": "GettaShower",
-      "url": "https://gettashower.com/"
-    },
-    {
-      "name": "Pensamientos",
-      "url": "https://www.manifestare.art"
-    }
-  ]
+  }
 }
 ---

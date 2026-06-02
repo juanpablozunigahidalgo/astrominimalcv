@@ -1,0 +1,34 @@
+---
+import RejectionLayout from '../../layouts/RejectionLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('general');
+  return pages.map((page) => ({
+    params: { lang: page.slug },
+  }));
+}
+
+const { lang } = Astro.params;
+const basePrefix = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const othersHref = `${basePrefix}/others`;
+---
+
+<RejectionLayout title="Rejection">
+  <p class="page-title">Rejection</p>
+  <p class="page-note">
+    Fictional companies and white-collar roles only. Letters are generated in English, one after another.
+    <a href={othersHref}>← Other</a>
+  </p>
+  <p id="rejection-status" class="rejection-status">Starting…</p>
+  <div id="rejection-feed" class="rejection-feed" aria-live="polite"></div>
+</RejectionLayout>
+
+<script>
+  import { startRejectionStream } from '../../lib/rejection-stream';
+
+  startRejectionStream(
+    document.getElementById('rejection-feed'),
+    document.getElementById('rejection-status')
+  );
+</script>

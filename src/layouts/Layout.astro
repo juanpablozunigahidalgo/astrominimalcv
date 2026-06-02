@@ -20,7 +20,7 @@ const currentGeneral = generalEntries.find(entry => entry.slug === lang)?.data |
 const navItems = [
     { label: currentGeneral.cv || 'CV', href: `${basePrefix}/${lang}/cv`, id: 'cv' },
     { label: currentGeneral.contact || 'Contact', href: `${basePrefix}/${lang}/contact`, id: 'contact' },
-    { label: currentGeneral.others || 'Other', href: `${basePrefix}/${lang}/others`, id: 'others' },
+    { label: currentGeneral.others || 'Other', href: `${basePrefix}/others`, id: 'others' },
 ];
 
 const aboutLink = { label: currentGeneral.about || 'About the site', href: `${basePrefix}/${lang}/about` };
@@ -44,12 +44,9 @@ if (pathSegments.length === 0) {
     currentPage = ''; // Root landing
 } else if (pathSegments.length === 1 && pathSegments[0] === lang) {
     currentPage = ''; // Lang landing
+} else if (pathSegments[0] === 'others') {
+    currentPage = 'others';
 } else if (pathSegments.length > 0) {
-     // If first segment is lang, take second. If not (e.g. english default implicit?), take first.
-     // Assuming structure is always /[lang]/page or /page (if default lang hidden)
-     // Based on routing: src/pages/[lang]/...
-     // If path is /cv -> segments=['cv'], lang='english' (default). currentPage='cv'.
-     // If path is /spanish/cv -> segments=['spanish','cv'], lang='spanish'. currentPage='cv'.
      if (pathSegments[0] === lang) {
          currentPage = pathSegments[1] || '';
      } else {
@@ -58,6 +55,7 @@ if (pathSegments.length === 0) {
 }
 
 const isLanding = currentPage === '';
+const isLanguagelessPage = currentPage === 'others';
 const hideSidebar = currentPage === 'about';
 ---
 
@@ -112,7 +110,7 @@ const hideSidebar = currentPage === 'about';
                 <ul class="lang-list">
                     {supportedLanguages.map(l => (
                         <li class={lang === l.value ? 'active-item' : 'inactive-item'}>
-                            <a href={isLanding ? `${basePrefix}/${l.value}` : `${basePrefix}/${l.value}/${currentPage}`} class={lang === l.value ? 'active-lang' : ''}>
+                            <a href={isLanding || isLanguagelessPage ? `${basePrefix}/${l.value}` : `${basePrefix}/${l.value}/${currentPage}`} class={lang === l.value ? 'active-lang' : ''}>
                                 {l.label}
                             </a>
                         </li>

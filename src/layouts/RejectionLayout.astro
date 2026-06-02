@@ -6,10 +6,10 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" translate="no">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Minimalist Others" />
+    <meta name="description" content="Fictional job rejections" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -25,9 +25,9 @@ const { title } = Astro.props;
   <body>
     <div class="layout-container">
       <div class="sidebar-wrapper">
-        <ul class="nav-list">
+        <div class="page-anchor">
           <slot />
-        </ul>
+        </div>
       </div>
     </div>
   </body>
@@ -52,15 +52,9 @@ const { title } = Astro.props;
     text-decoration: none;
     opacity: 0.8;
   }
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
 </style>
 
 <style>
-  /* Misma rejilla y offsets que Layout.astro (página principal) */
   .layout-container {
     display: grid;
     grid-template-columns: 200px 1fr 150px;
@@ -75,21 +69,53 @@ const { title } = Astro.props;
     position: relative;
   }
 
-  .nav-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    font-size: 13px;
+  .page-anchor {
     margin-top: 120px;
     margin-left: 60px;
-    list-style: none;
-    padding: 0;
-    margin-bottom: 0;
+    max-width: 52rem;
   }
 
-  .nav-list :global(li) {
-    margin-bottom: 2px;
-    list-style: none;
+  .page-anchor :global(.page-title) {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: normal;
+  }
+
+  .page-anchor :global(.page-note) {
+    margin: 0 0 16px;
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+
+  .page-anchor :global(.rejection-status) {
+    margin: 0 0 12px;
+    opacity: 0.6;
+  }
+
+  .page-anchor :global(.rejection-feed) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .page-anchor :global(.rejection-letter) {
+    margin: 0;
+    padding: 0 0 24px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .page-anchor :global(.rejection-meta) {
+    margin: 0 0 8px;
+    opacity: 0.75;
+  }
+
+  .page-anchor :global(.rejection-body) {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.45;
   }
 
   @media (max-width: 1024px) {
@@ -108,7 +134,7 @@ const { title } = Astro.props;
       gap: 20px;
     }
 
-    .nav-list {
+    .page-anchor {
       margin-top: 80px;
       margin-left: 24px;
     }
