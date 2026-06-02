@@ -23,9 +23,13 @@ const { title } = Astro.props;
     </script>
   </head>
   <body>
-    <main class="others-only-layout">
-      <slot />
-    </main>
+    <div class="layout-container">
+      <div class="sidebar-wrapper">
+        <ul class="nav-list">
+          <slot />
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
 
@@ -45,29 +49,68 @@ const { title } = Astro.props;
     transition: opacity 0.2s;
   }
   a:hover {
-    text-decoration: underline;
+    text-decoration: none;
     opacity: 0.8;
   }
-</style>
-
-<style>
-  .others-only-layout {
-    max-width: 900px;
-    margin: 120px auto;
-    padding: 0 clamp(24px, 6vw, 120px);
-    text-align: left;
-    line-height: 1.6;
-  }
-  .others-only-layout ul {
+  ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  .others-only-layout li {
+</style>
+
+<style>
+  /* Misma rejilla y offsets que Layout.astro (página principal) */
+  .layout-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 150px;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .sidebar-wrapper {
+    position: relative;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-size: 13px;
+    margin-top: 120px;
+    margin-left: 60px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .nav-list :global(li) {
+    margin-bottom: 2px;
     list-style: none;
   }
-  a:hover {
-        text-decoration: none;
-        opacity: 0.8;
+
+  @media (max-width: 1024px) {
+    .layout-container {
+      grid-template-columns: 160px 1fr 100px;
+      padding: 20px;
+      gap: 20px;
     }
+  }
+
+  @media (max-width: 768px) {
+    .layout-container {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .nav-list {
+      margin-top: 80px;
+      margin-left: 24px;
+    }
+  }
 </style>

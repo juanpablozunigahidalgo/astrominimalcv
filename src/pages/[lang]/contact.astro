@@ -15,20 +15,7 @@ const { contactdata } = page.data;
 ---
 
 <ContactLayout title="Contact">
-  <div class="contact-content">
-      <p>{contactdata.email}</p>
-      <p><a href={contactdata.linkedin} target="_blank">{contactdata.linkedin}</a></p>
-      <p><a href={contactdata.github} target="_blank">{contactdata.github}</a></p>
-  </div>
+  <li>{contactdata.email}</li>
+  <li><a href={contactdata.linkedin} target="_blank">{contactdata.linkedin}</a></li>
+  <li><a href={contactdata.github} target="_blank">{contactdata.github}</a></li>
 </ContactLayout>
-
-<style>
-.contact-content {
-  color: black;
-  font-size: 13px;
-  line-height: 1.6;
-}
-.contact-content p {
-    margin-bottom: 6px;
-}
-</style>
