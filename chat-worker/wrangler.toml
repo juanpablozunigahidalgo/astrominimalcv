@@ -10,6 +10,8 @@ KNOWLEDGE_URL = "https://raw.githubusercontent.com/juanpablozunigahidalgo/astrom
 CALENDLY_URL = "https://calendly.com/juanpablo-zunigah/30min"
 PROJECTS_REPO = "juanpablozunigahidalgo/experimentar.eu"
 PROJECTS_DIR = "src/content/portafolio"
+# Used when the GitHub listing API is unavailable.
+PROJECTS_FALLBACK = "AWS-AI-bank-loan-and-onboarding.md,ML-Redcare-Koln.md,NorthBank-Partner-Research-Assistant.md,Precision-Logistics-Inventory-Flow-Engine.md,Predictive-Risk-Fraud-Intelligence.md,co2-backend-sunpower.md,gettashower.md"
 PROJECTS_SITE = "https://experimentar.eu/portafolio/"
 PROJECTS_ABOUT_URL = "https://raw.githubusercontent.com/juanpablozunigahidalgo/experimentar.eu/HEAD/src/content/about/description.md"
 ALLOWED_ORIGINS = "https://www.zunigajp.com,https://zunigajp.com,http://localhost:4321,http://localhost:4329"

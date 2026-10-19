@@ -248,21 +248,26 @@ async function getProjects(env, ctx) {
     ctx,
     { 'User-Agent': 'jp-chat-worker', Accept: 'application/vnd.github+json' }
   );
-  let files = [];
+  let files;
   try {
-    files = JSON.parse(listing).filter((f) => f.type === 'file' && f.name.endsWith('.md'));
+    files = JSON.parse(listing)
+      .filter((f) => f.type === 'file' && f.name.endsWith('.md'))
+      .map((f) => f.name);
   } catch {
-    return '';
+    // The anonymous GitHub API is often rate limited from Cloudflare's shared IPs.
+    files = (env.PROJECTS_FALLBACK || '').split(',').map((s) => s.trim()).filter(Boolean);
   }
 
+  const raw = `https://raw.githubusercontent.com/${env.PROJECTS_REPO}/HEAD/${env.PROJECTS_DIR}/`;
   const [about, ...docs] = await Promise.all([
     env.PROJECTS_ABOUT_URL ? getSource(env.PROJECTS_ABOUT_URL, ctx) : Promise.resolve(''),
-    ...files.map((f) => getSource(f.download_url, ctx)),
+    ...files.map((name) => getSource(raw + name, ctx)),
   ]);
 
-  const sections = files.map((f, i) => {
+  const sections = files.map((name, i) => {
+    if (!docs[i]) return '';
     const { data, body } = parseFrontmatter(docs[i]);
-    const lines = [`## ${data.title || f.name}`, `Page: ${env.PROJECTS_SITE}${f.name}`];
+    const lines = [`## ${data.title || name}`, `Page: ${env.PROJECTS_SITE}${name}`];
     if (data.github) lines.push(`External link: ${data.github}`);
     lines.push(body);
     return lines.join('\n');
