@@ -1,0 +1,138 @@
+---
+interface Props {
+  title: string;
+  lang?: string;
+}
+const { title, lang = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Minimalist Chat" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WD5BB9J40J"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WD5BB9J40J');
+    </script>
+  </head>
+  <body>
+    <div class="layout-container">
+      <div class="sidebar-wrapper">
+        <div class="page-anchor">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: Consolas, 'Courier New', monospace;
+    color: black;
+    font-size: 13px;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+</style>
+
+<style>
+  .layout-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 150px;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .sidebar-wrapper {
+    position: relative;
+  }
+
+  .page-anchor {
+    margin-top: 120px;
+    margin-left: 60px;
+    width: min(40rem, calc(100vw - 140px));
+  }
+
+  .page-anchor :global(.chat-log) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 16px;
+    line-height: 1.45;
+  }
+
+  .page-anchor :global(.chat-line) {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .page-anchor :global(.chat-who) {
+    opacity: 0.5;
+  }
+
+  .page-anchor :global(.chat-form) {
+    display: flex;
+    gap: 8px;
+  }
+
+  .page-anchor :global(.chat-form span) {
+    opacity: 0.5;
+  }
+
+  .page-anchor :global(.chat-input) {
+    flex: 1;
+    border: 0;
+    padding: 0;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
+  @media (max-width: 1024px) {
+    .layout-container {
+      grid-template-columns: 160px 1fr 100px;
+      padding: 20px;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .layout-container {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .page-anchor {
+      margin-top: 80px;
+      margin-left: 24px;
+      width: calc(100vw - 88px);
+    }
+  }
+</style>

@@ -1,0 +1,3 @@
+GEMINI_API_KEY=paste-your-google-ai-studio-key-here
+MEETING_WEBHOOK_URL=paste-your-apps-script-web-app-url-here
+MEETING_SECRET=same-secret-as-in-Code.gs

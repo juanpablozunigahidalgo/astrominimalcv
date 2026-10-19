@@ -1,0 +1,105 @@
+---
+import ChatLayout from '../../layouts/ChatLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('general');
+  return pages.map(page => ({
+    params: { lang: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { chat, chatui, contactdata } = page.data;
+const endpoint = import.meta.env.PUBLIC_CHAT_ENDPOINT || '';
+---
+
+<ChatLayout title={chat} lang={Astro.params.lang}>
+  <div
+    id="chat"
+    data-endpoint={endpoint}
+    data-lang={Astro.params.lang}
+    data-you={chatui.you}
+    data-fallback={`${chatui.fallback} ${contactdata.email}`}
+    data-limit={`${chatui.limit} ${contactdata.email}`}
+  >
+    <div id="chat-log" class="chat-log" aria-live="polite">
+      <p class="chat-line"><span class="chat-who">JP: </span>{chatui.greeting}</p>
+    </div>
+    <form id="chat-form" class="chat-form" autocomplete="off">
+      <span>&gt;</span>
+      <input
+        id="chat-input"
+        class="chat-input"
+        type="text"
+        maxlength="500"
+        placeholder={chatui.placeholder}
+        aria-label={chatui.placeholder}
+        autofocus
+      />
+    </form>
+  </div>
+</ChatLayout>
+
+<script>
+  const root = document.getElementById('chat') as HTMLElement;
+  const log = document.getElementById('chat-log') as HTMLElement;
+  const form = document.getElementById('chat-form') as HTMLFormElement;
+  const input = document.getElementById('chat-input') as HTMLInputElement;
+  const { endpoint, lang, you, fallback = '', limit = '' } = root.dataset;
+  const history: { role: 'user' | 'model'; text: string }[] = [];
+
+  function addLine(who: string, text: string) {
+    const line = document.createElement('p');
+    line.className = 'chat-line';
+    const label = document.createElement('span');
+    label.className = 'chat-who';
+    label.textContent = `${who}: `;
+    const body = document.createElement('span');
+    body.textContent = text;
+    line.append(label, body);
+    log.append(line);
+    line.scrollIntoView({ block: 'nearest' });
+    return body;
+  }
+
+  async function reply(message: string): Promise<string> {
+    if (!endpoint) return fallback;
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, lang, history }),
+      });
+      if (res.status === 429) return limit;
+      if (!res.ok) return fallback;
+      const data = await res.json();
+      if (!data.reply) return fallback;
+      history.push({ role: 'user', text: message }, { role: 'model', text: data.reply });
+      return data.reply;
+    } catch {
+      return fallback;
+    }
+  }
+
+  input.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' || event.isComposing) return;
+    event.preventDefault();
+    form.requestSubmit();
+  });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const message = input.value.trim();
+    if (!message) return;
+    input.value = '';
+    addLine(you || 'You', message);
+    input.disabled = true;
+    const pending = addLine('JP', '…');
+    pending.textContent = await reply(message);
+    pending.scrollIntoView({ block: 'nearest' });
+    input.disabled = false;
+    input.focus();
+  });
+</script>

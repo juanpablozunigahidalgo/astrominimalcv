@@ -20,6 +20,7 @@ const currentGeneral = generalEntries.find(entry => entry.slug === lang)?.data |
 const navItems = [
     { label: currentGeneral.cv || 'CV', href: `${basePrefix}/${lang}/cv`, id: 'cv' },
     { label: currentGeneral.contact || 'Contact', href: `${basePrefix}/${lang}/contact`, id: 'contact' },
+    { label: currentGeneral.chat || 'Chat', href: `${basePrefix}/${lang}/chat`, id: 'chat' },
     { label: currentGeneral.others || 'Other', href: `${basePrefix}/others`, id: 'others' },
 ];
 

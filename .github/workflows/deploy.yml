@@ -33,6 +33,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: true
+          PUBLIC_CHAT_ENDPOINT: https://jp-chat.juanpablo-zunigah.workers.dev
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

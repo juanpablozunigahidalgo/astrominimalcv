@@ -4,6 +4,14 @@
   "others": "Other",
   "blog": "Blog",
   "contact": "Contact",
+  "chat": "Chat",
+  "chatui": {
+    "greeting": "Hi, I'm the virtual Juan Pablo. Ask me anything about my work.",
+    "placeholder": "Write a message…",
+    "you": "You",
+    "fallback": "I'm still being built. Meanwhile, you can write to the real Juan Pablo:",
+    "limit": "I've talked a lot today and need a break. Try again later, or write to the real Juan Pablo:"
+  },
   "about": "About the site",
   "text-about": "I built this website using the Astro framework, and it’s published as static pages on GitHub Pages. Content and translations live in Markdown files and are rendered via Astro Content Collections. The design is intentionally minimalist—fixed typography, clean layouts, and language‑specific routes—so pages load fast, remain accessible, and are easy to maintain. If you want a similar site, feel free to visit my GitHub and copy the code. Open‑source.",
   "contactdata": {

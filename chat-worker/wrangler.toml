@@ -1,0 +1,15 @@
+name = "jp-chat"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Tried in order; the next one is used when a model is overloaded.
+GEMINI_MODELS = "gemini-flash-latest,gemini-flash-lite-latest"
+CV_URL = "https://raw.githubusercontent.com/juanpablozunigahidalgo/astrominimalcv/main/src/content/cv/english.md"
+ALLOWED_ORIGINS = "https://www.zunigajp.com,https://zunigajp.com,http://localhost:4321,http://localhost:4329"
+
+# Max messages per visitor (IP) per minute. Gemini's free tier caps the daily total.
+[[ratelimits]]
+name = "CHAT_LIMITER"
+namespace_id = "1001"
+simple = { limit = 8, period = 60 }
