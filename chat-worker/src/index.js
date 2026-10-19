@@ -1,4 +1,9 @@
 import persona from './persona.txt';
+import quotes from './quotes.json';
+
+const QUOTES = quotes
+  .map((q) => `- "${q.Cita}" (${q.author === '-' ? 'my own reflection' : q.author})`)
+  .join('\n');
 
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_HISTORY = 12;
@@ -86,6 +91,7 @@ export default {
         ? 'THIS REPLY: after answering, ask in one short sentence if they need anything else or would like to connect with the real Juan Pablo directly.'
         : '',
       `MY KNOWLEDGE (how I think, my views and my answers):\n${knowledge || '(nothing shared yet)'}`,
+      `MY QUOTES (my collection on manifestare.art, in the original language; the text in brackets is the author or my note):\n${QUOTES}`,
       `MY PROJECTS (from my AI lab experimentar.eu):\n${projects || '(temporarily unavailable)'}`,
       `MY CV:\n${cv}`,
     ]
