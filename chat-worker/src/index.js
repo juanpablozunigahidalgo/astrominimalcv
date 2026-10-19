@@ -2,32 +2,41 @@ import persona from './persona.txt';
 
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_HISTORY = 12;
-const CV_CACHE_SECONDS = 3600;
+const MAX_TURNS = 30;
+const OFFER_CONTACT_EVERY = 4;
+const SOURCE_CACHE_SECONDS = 3600;
 const GEMINI_TIMEOUT_MS = 20000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const MEETING_TOOL = {
-  function_declarations: [
-    {
-      name: 'request_meeting',
-      description:
-        'Send the real Juan Pablo a meeting request by email. Only call it when the visitor has already given their name, a valid email and the topic, you have read those details back to them, and their latest message explicitly confirms (for example "yes, send it").',
-      parameters: {
-        type: 'object',
-        properties: {
-          name: { type: 'string', description: 'Visitor full name' },
-          email: { type: 'string', description: 'Visitor email address' },
-          topic: { type: 'string', description: 'What the visitor wants to talk about' },
-          preferred_time: { type: 'string', description: 'Days or times the visitor suggested, if any' },
-          summary: {
-            type: 'string',
-            description: 'Short summary of the whole conversation, written in English for Juan Pablo',
-          },
-        },
-        required: ['name', 'email', 'topic', 'summary'],
+const MEETING_DECLARATION = {
+  name: 'request_meeting',
+  description:
+    'Send the real Juan Pablo a meeting request by email. Only call it when the visitor has already given their name, a valid email and the topic, you have read those details back to them, and their latest message explicitly confirms (for example "yes, send it").',
+  parameters: {
+    type: 'object',
+    properties: {
+      name: { type: 'string', description: 'Visitor full name' },
+      email: { type: 'string', description: 'Visitor email address' },
+      topic: { type: 'string', description: 'What the visitor wants to talk about' },
+      preferred_time: { type: 'string', description: 'Days or times the visitor suggested, if any' },
+      summary: {
+        type: 'string',
+        description: 'Short summary of the whole conversation, written in English for Juan Pablo',
       },
     },
-  ],
+    required: ['name', 'email', 'topic', 'summary'],
+  },
+};
+
+const END_DECLARATION = {
+  name: 'end_conversation',
+  description:
+    'Close the chat for good. Use it when the visitor insults or harasses Juan Pablo or you, uses hateful or sexual language, or keeps misusing the chat after one calm warning.',
+  parameters: {
+    type: 'object',
+    properties: { reason: { type: 'string', description: 'Short reason, in English' } },
+    required: ['reason'],
+  },
 };
 
 export default {
@@ -60,34 +69,60 @@ export default {
     if (!message) return json({ error: 'empty' }, 400, cors);
     const lang = String(body.lang || 'english').slice(0, 20);
     const history = sanitizeHistory(body.history);
+    const turn = Math.floor(Number(body.turn) || 0) + 1;
+    if (turn > MAX_TURNS) return json({ error: 'max-turns' }, 429, cors);
     const canBook = Boolean(env.MEETING_WEBHOOK_URL && env.MEETING_SECRET);
 
-    const cv = await getCv(env, ctx);
+    const [cv, knowledge] = await Promise.all([
+      getSource(env.CV_URL, ctx).then((text) => (text ? compactCv(text) : '(CV temporarily unavailable)')),
+      env.KNOWLEDGE_URL ? getSource(env.KNOWLEDGE_URL, ctx) : Promise.resolve(''),
+    ]);
     const systemPrompt = [
       persona,
       `PAGE LANGUAGE: ${lang}`,
       `MEETING REQUESTS: ${canBook ? 'available through the request_meeting tool' : 'not available, share the email and LinkedIn instead'}`,
+      turn % OFFER_CONTACT_EVERY === 0
+        ? 'THIS REPLY: after answering, ask in one short sentence if they need anything else or would like to connect with the real Juan Pablo directly.'
+        : '',
+      `MY KNOWLEDGE (how I think, my views and my answers):\n${knowledge || '(nothing shared yet)'}`,
       `MY CV:\n${cv}`,
-    ].join('\n\n');
+    ]
+      .filter(Boolean)
+      .join('\n\n');
 
     const contents = [
       ...history.map((h) => ({ role: h.role, parts: [{ text: h.text }] })),
       { role: 'user', parts: [{ text: message }] },
     ];
 
-    let result = await gemini(env, systemPrompt, contents, canBook);
+    const tools = canBook ? [MEETING_DECLARATION, END_DECLARATION] : [END_DECLARATION];
+    let result = await gemini(env, systemPrompt, contents, tools);
     if (result.error) return json({ error: result.error }, result.status, cors);
 
     let meetingSent = false;
+    let bookingUrl = '';
+    let ended = false;
     const call = result.content.parts?.find((p) => p.functionCall)?.functionCall;
-    if (call?.name === 'request_meeting' && canBook) {
-      const outcome = await sendMeetingRequest(env, call.args || {}, lang);
-      meetingSent = outcome.ok;
+    if (call) {
+      let outcome = { ok: false, reason: 'Unknown tool.' };
+      if (call.name === 'request_meeting' && canBook) {
+        outcome = await sendMeetingRequest(env, call.args || {}, lang);
+        meetingSent = outcome.ok;
+        if (meetingSent && env.CALENDLY_URL) {
+          bookingUrl = calendlyLink(env.CALENDLY_URL, call.args || {});
+          outcome.calendar =
+            'The website shows a calendar link right below your reply. Tell the visitor to pick a time with the link below. Do not write any URL yourself.';
+        }
+      } else if (call.name === 'end_conversation') {
+        ended = true;
+        console.log('Conversation ended:', call.args?.reason);
+        outcome = { ok: true, instruction: 'Say a short, calm goodbye in the visitor\'s language, without lecturing.' };
+      }
       contents.push(result.content, {
         role: 'user',
         parts: [{ functionResponse: { name: call.name, response: outcome } }],
       });
-      result = await gemini(env, systemPrompt, contents, false);
+      result = await gemini(env, systemPrompt, contents, null);
       if (result.error) return json({ error: result.error }, result.status, cors);
     }
 
@@ -97,15 +132,23 @@ export default {
       .trim();
     if (!reply) return json({ error: 'empty-reply' }, 502, cors);
 
-    return json({ reply, meetingSent }, 200, cors);
+    return json({ reply, meetingSent, bookingUrl, ended }, 200, cors);
   },
 };
 
-async function gemini(env, systemPrompt, contents, withTools) {
+function calendlyLink(base, args) {
+  const url = new URL(base);
+  if (args.name) url.searchParams.set('name', String(args.name).slice(0, 200));
+  if (args.email) url.searchParams.set('email', String(args.email).slice(0, 200));
+  if (args.topic) url.searchParams.set('a1', String(args.topic).slice(0, 500));
+  return url.toString();
+}
+
+async function gemini(env, systemPrompt, contents, declarations) {
   const body = JSON.stringify({
     system_instruction: { parts: [{ text: systemPrompt }] },
     contents,
-    ...(withTools ? { tools: [MEETING_TOOL] } : {}),
+    ...(declarations ? { tools: [{ function_declarations: declarations }] } : {}),
     generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
   });
   const models = env.GEMINI_MODELS.split(',').map((m) => m.trim()).filter(Boolean);
@@ -196,19 +239,19 @@ function sanitizeHistory(history) {
     .map((h) => ({ role: h.role, text: h.text.slice(0, 2000) }));
 }
 
-async function getCv(env, ctx) {
+async function getSource(url, ctx) {
   const cache = caches.default;
-  const key = new Request(env.CV_URL);
+  const key = new Request(url);
   let res = await cache.match(key);
   if (!res) {
-    const upstream = await fetch(env.CV_URL);
-    if (!upstream.ok) return '(CV temporarily unavailable)';
+    const upstream = await fetch(url);
+    if (!upstream.ok) return '';
     res = new Response(await upstream.text(), {
-      headers: { 'Cache-Control': `max-age=${CV_CACHE_SECONDS}` },
+      headers: { 'Cache-Control': `max-age=${SOURCE_CACHE_SECONDS}` },
     });
     ctx.waitUntil(cache.put(key, res.clone()));
   }
-  return compactCv(await res.text());
+  return res.text();
 }
 
 function compactCv(markdown) {

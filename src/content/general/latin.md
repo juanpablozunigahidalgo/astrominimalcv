@@ -10,7 +10,9 @@
     "placeholder": "Nuntium scribe…",
     "you": "Tu",
     "fallback": "Adhuc aedificor. Interim vero Ioanni Paulo scribere potes:",
-    "limit": "Hodie multum locutus sum et quiete egeo. Postea iterum tempta, aut vero Ioanni Paulo scribe:"
+    "limit": "Hodie multum locutus sum et quiete egeo. Postea iterum tempta, aut vero Ioanni Paulo scribe:",
+    "book": "Tempus in calendario meo elige →",
+    "ended": "Colloquium clausum"
   },
   "about": "Circa locum",
   "text-about": "Hunc situm interretialem systemate Astro aedificavi. In GitHub ut pagina statica editus est. Argumentum et interpretationes in scriniis Markdown continentur et per Astro Content Collections redduntur. Forma consulto simplex est — typis certis, dispositionibus puris, itineribusque pro linguis propriis — ut paginae celeriter onerentur, faciles aditu sint, ac leviter colantur. Si similem situm cupis, GitHub meum adi et codicem exscribe. Fons apertus.",

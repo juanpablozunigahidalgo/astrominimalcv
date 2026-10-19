@@ -23,6 +23,8 @@ const endpoint = import.meta.env.PUBLIC_CHAT_ENDPOINT || '';
     data-you={chatui.you}
     data-fallback={`${chatui.fallback} ${contactdata.email}`}
     data-limit={`${chatui.limit} ${contactdata.email}`}
+    data-book={chatui.book}
+    data-ended={chatui.ended}
   >
     <div id="chat-log" class="chat-log" aria-live="polite">
       <p class="chat-line"><span class="chat-who">JP: </span>{chatui.greeting}</p>
@@ -47,8 +49,11 @@ const endpoint = import.meta.env.PUBLIC_CHAT_ENDPOINT || '';
   const log = document.getElementById('chat-log') as HTMLElement;
   const form = document.getElementById('chat-form') as HTMLFormElement;
   const input = document.getElementById('chat-input') as HTMLInputElement;
-  const { endpoint, lang, you, fallback = '', limit = '' } = root.dataset;
+  const { endpoint, lang, you, fallback = '', limit = '', book = '', ended = '' } = root.dataset;
   const history: { role: 'user' | 'model'; text: string }[] = [];
+  let closed = false;
+
+  type Reply = { text: string; bookingUrl?: string; ended?: boolean };
 
   function addLine(who: string, text: string) {
     const line = document.createElement('p');
@@ -64,22 +69,36 @@ const endpoint = import.meta.env.PUBLIC_CHAT_ENDPOINT || '';
     return body;
   }
 
-  async function reply(message: string): Promise<string> {
-    if (!endpoint) return fallback;
+  function addBookingLink(url: string) {
+    const line = document.createElement('p');
+    line.className = 'chat-line';
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.className = 'chat-link';
+    link.textContent = book;
+    line.append(link);
+    log.append(line);
+    line.scrollIntoView({ block: 'nearest' });
+  }
+
+  async function reply(message: string): Promise<Reply> {
+    if (!endpoint) return { text: fallback };
     try {
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, lang, history }),
+        body: JSON.stringify({ message, lang, history, turn: history.length / 2 }),
       });
-      if (res.status === 429) return limit;
-      if (!res.ok) return fallback;
+      if (res.status === 429) return { text: limit };
+      if (!res.ok) return { text: fallback };
       const data = await res.json();
-      if (!data.reply) return fallback;
+      if (!data.reply) return { text: fallback };
       history.push({ role: 'user', text: message }, { role: 'model', text: data.reply });
-      return data.reply;
+      return { text: data.reply, bookingUrl: data.bookingUrl, ended: data.ended };
     } catch {
-      return fallback;
+      return { text: fallback };
     }
   }
 
@@ -92,13 +111,20 @@ const endpoint = import.meta.env.PUBLIC_CHAT_ENDPOINT || '';
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const message = input.value.trim();
-    if (!message) return;
+    if (!message || closed) return;
     input.value = '';
     addLine(you || 'You', message);
     input.disabled = true;
     const pending = addLine('JP', '…');
-    pending.textContent = await reply(message);
+    const result = await reply(message);
+    pending.textContent = result.text;
     pending.scrollIntoView({ block: 'nearest' });
+    if (result.bookingUrl) addBookingLink(result.bookingUrl);
+    if (result.ended) {
+      closed = true;
+      input.placeholder = ended;
+      return;
+    }
     input.disabled = false;
     input.focus();
   });

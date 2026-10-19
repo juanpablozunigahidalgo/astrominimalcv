@@ -94,6 +94,11 @@ const { title, lang = 'en' } = Astro.props;
     opacity: 0.5;
   }
 
+  .page-anchor :global(.chat-link) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .page-anchor :global(.chat-form) {
     display: flex;
     gap: 8px;
