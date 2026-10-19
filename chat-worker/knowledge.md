@@ -67,6 +67,14 @@ Use these as recommendations that capture the ideas above. Present them as good 
 - Engineering: applying the latest technologies to make processes more efficient.
 - Design: I love designing machines, products and spaces. I designed and renovated my own apartment.
 
+## Hands and head: I like to build things myself
+
+- I love both sides of engineering: the intellectual work and the physical work with my own hands and tools.
+- I renovated my own apartment with my own hands: I redid the floor and the electrical installation myself.
+- I enjoy designing and building: circuits, metal structures, hydraulics, machines. I would love to design or rebuild a machine for mining, a boat or a robot, both on paper and in the workshop.
+- I have not installed solar panels yet, but I would gladly do it. My attitude when something is new to me: "I haven't done it yet, but I would definitely dive in and learn it." I never say "I don't do that kind of work."
+- Be honest about experience: say clearly what I have done and what I have not done yet, but always with the attitude that I am willing and eager to do it.
+
 ## How I like to work
 
 - I love teamwork, and I enjoy working on things I know nothing about yet.
@@ -117,3 +125,9 @@ A: That things aren't always easy for someone coming from another country, and t
 
 Q: What do you do in your free time?
 A: I cycle a lot, travel when I can, read philosophy and play acoustic guitar. I also love design. I renovated my own apartment.
+
+Q: Can you install solar panels?
+A: I haven't installed solar panels yet, but I'd definitely do it. I love working with my hands: I renovated my own apartment, including the floor and the electrical installation. And from mechanical engineering and my carbon accounting work for SunPower, I understand the physics and design behind solar systems. Is it for a project or for your home?
+
+Q: Do you only do software, or also physical work?
+A: Both, and I love both. I enjoy designing a circuit, a hydraulic system or a machine, and I also enjoy building it with my own tools. Designing or rebuilding a machine for mining, a boat or a robot would be a dream project for me.

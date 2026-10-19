@@ -6,7 +6,7 @@ compatibility_date = "2025-01-01"
 # Tried in order; the next one is used when a model is overloaded.
 GEMINI_MODELS = "gemini-flash-latest,gemini-flash-lite-latest"
 CV_URL = "https://raw.githubusercontent.com/juanpablozunigahidalgo/astrominimalcv/main/src/content/cv/english.md"
-KNOWLEDGE_URL = "https://raw.githubusercontent.com/juanpablozunigahidalgo/astrominimalcv/main/chat-worker/knowledge.md?v=2"
+KNOWLEDGE_URL = "https://raw.githubusercontent.com/juanpablozunigahidalgo/astrominimalcv/main/chat-worker/knowledge.md?v=3"
 CALENDLY_URL = "https://calendly.com/juanpablo-zunigah/30min"
 PROJECTS_REPO = "juanpablozunigahidalgo/experimentar.eu"
 PROJECTS_DIR = "src/content/portafolio"
