@@ -73,9 +73,10 @@ export default {
     if (turn > MAX_TURNS) return json({ error: 'max-turns' }, 429, cors);
     const canBook = Boolean(env.MEETING_WEBHOOK_URL && env.MEETING_SECRET);
 
-    const [cv, knowledge] = await Promise.all([
+    const [cv, knowledge, projects] = await Promise.all([
       getSource(env.CV_URL, ctx).then((text) => (text ? compactCv(text) : '(CV temporarily unavailable)')),
       env.KNOWLEDGE_URL ? getSource(env.KNOWLEDGE_URL, ctx) : Promise.resolve(''),
+      getProjects(env, ctx),
     ]);
     const systemPrompt = [
       persona,
@@ -85,6 +86,7 @@ export default {
         ? 'THIS REPLY: after answering, ask in one short sentence if they need anything else or would like to connect with the real Juan Pablo directly.'
         : '',
       `MY KNOWLEDGE (how I think, my views and my answers):\n${knowledge || '(nothing shared yet)'}`,
+      `MY PROJECTS (from my AI lab experimentar.eu):\n${projects || '(temporarily unavailable)'}`,
       `MY CV:\n${cv}`,
     ]
       .filter(Boolean)
@@ -239,12 +241,53 @@ function sanitizeHistory(history) {
     .map((h) => ({ role: h.role, text: h.text.slice(0, 2000) }));
 }
 
-async function getSource(url, ctx) {
+async function getProjects(env, ctx) {
+  if (!env.PROJECTS_REPO) return '';
+  const listing = await getSource(
+    `https://api.github.com/repos/${env.PROJECTS_REPO}/contents/${env.PROJECTS_DIR}`,
+    ctx,
+    { 'User-Agent': 'jp-chat-worker', Accept: 'application/vnd.github+json' }
+  );
+  let files = [];
+  try {
+    files = JSON.parse(listing).filter((f) => f.type === 'file' && f.name.endsWith('.md'));
+  } catch {
+    return '';
+  }
+
+  const [about, ...docs] = await Promise.all([
+    env.PROJECTS_ABOUT_URL ? getSource(env.PROJECTS_ABOUT_URL, ctx) : Promise.resolve(''),
+    ...files.map((f) => getSource(f.download_url, ctx)),
+  ]);
+
+  const sections = files.map((f, i) => {
+    const { data, body } = parseFrontmatter(docs[i]);
+    const lines = [`## ${data.title || f.name}`, `Page: ${env.PROJECTS_SITE}${f.name}`];
+    if (data.github) lines.push(`External link: ${data.github}`);
+    lines.push(body);
+    return lines.join('\n');
+  });
+  const statement = about ? `## Why I created experimentar.eu\n${parseFrontmatter(about).body}` : '';
+  return [statement, ...sections].filter(Boolean).join('\n\n');
+}
+
+function parseFrontmatter(text) {
+  const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(text || '');
+  if (!match) return { data: {}, body: (text || '').trim() };
+  const data = {};
+  for (const line of match[1].split(/\r?\n/)) {
+    const kv = /^(\w+):\s*"?(.*?)"?\s*$/.exec(line);
+    if (kv) data[kv[1]] = kv[2];
+  }
+  return { data, body: match[2].trim() };
+}
+
+async function getSource(url, ctx, headers) {
   const cache = caches.default;
   const key = new Request(url);
   let res = await cache.match(key);
   if (!res) {
-    const upstream = await fetch(url);
+    const upstream = await fetch(url, headers ? { headers } : undefined);
     if (!upstream.ok) return '';
     res = new Response(await upstream.text(), {
       headers: { 'Cache-Control': `max-age=${SOURCE_CACHE_SECONDS}` },
