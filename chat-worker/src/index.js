@@ -111,7 +111,7 @@ export default {
         if (meetingSent && env.CALENDLY_URL) {
           bookingUrl = calendlyLink(env.CALENDLY_URL, call.args || {});
           outcome.calendar =
-            'The website shows a calendar link right below your reply. Tell the visitor to pick a time with the link below. Do not write any URL yourself.';
+            'The website shows a calendar link right below your reply, already filled in with the visitor details. Tell the visitor to pick a time with the link below. Do not write any URL in this reply.';
         }
       } else if (call.name === 'end_conversation') {
         ended = true;
