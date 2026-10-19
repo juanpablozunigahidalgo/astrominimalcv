@@ -42,11 +42,24 @@ const { title } = Astro.props;
 </style>
 
 <style>
+  /* Starts where the "CV" link sits on the landing page (Layout.astro: container padding + nav margins). */
   .cv-only-layout {
-    max-width: 1000px;
-    margin: 110px auto;
-    padding: 0 clamp(24px, 6vw, 120px);
+    width: 60%;
+    margin: 160px 0 110px calc(max(0px, (100% - 1480px) / 2) + 100px);
     line-height: 1.6;
     text-align: left;
+  }
+
+  @media (max-width: 1024px) {
+    .cv-only-layout {
+      margin-left: 80px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cv-only-layout {
+      width: auto;
+      margin: 100px 44px 60px;
+    }
   }
 </style>
