@@ -6,7 +6,7 @@
   "contact": "Contactus",
   "chat": "Colloquium",
   "chatui": {
-    "greeting": "Salve, ego sum Ioannes Paulus virtualis. Roga me quidquid vis de opere meo.",
+    "greeting": "Salve, ego sum Ioannes Paulus virtualis. Roga me quidquid vis de opere meo. Te etiam adiuvare possum ut colloquium virtuale mecum constituas.",
     "placeholder": "Nuntium scribe…",
     "you": "Tu",
     "fallback": "Adhuc aedificor. Interim vero Ioanni Paulo scribere potes:",

@@ -6,7 +6,7 @@
   "contact": "Kontakt",
   "chat": "Chatt",
   "chatui": {
-    "greeting": "Hej, jag är den virtuella Juan Pablo. Fråga mig vad du vill om mitt arbete.",
+    "greeting": "Hej, jag är den virtuella Juan Pablo. Fråga mig vad du vill om mitt arbete. Jag kan också hjälpa dig att boka ett videosamtal med mig.",
     "placeholder": "Skriv ett meddelande…",
     "you": "Du",
     "fallback": "Jag håller fortfarande på att byggas. Under tiden kan du skriva till den riktiga Juan Pablo:",
