@@ -4,7 +4,7 @@
   "others": "Andra",
   "blog": "Blogg",
   "contact": "Kontakt",
-  "chat": "Chatt",
+  "chat": "ChattaMig",
   "chatui": {
     "greeting": "Hej, jag är den virtuella Juan Pablo. Fråga mig vad du vill om mitt arbete. Jag kan också hjälpa dig att boka ett videosamtal med mig.",
     "placeholder": "Skriv ett meddelande…",

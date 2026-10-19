@@ -4,7 +4,7 @@
   "others": "Alium",
   "blog": "Blog",
   "contact": "Contactus",
-  "chat": "Colloquium",
+  "chat": "LoquereMecum",
   "chatui": {
     "greeting": "Salve, ego sum Ioannes Paulus virtualis. Roga me quidquid vis de opere meo. Te etiam adiuvare possum ut colloquium virtuale mecum constituas.",
     "placeholder": "Nuntium scribe…",

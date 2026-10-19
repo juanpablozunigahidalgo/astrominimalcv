@@ -4,7 +4,7 @@
   "others": "Otros",
   "blog": "Blog",
   "contact": "Contacto",
-  "chat": "Chat",
+  "chat": "ChatConmigo",
   "chatui": {
     "greeting": "Hola, soy el Juan Pablo virtual. Pregúntame lo que quieras sobre mi trabajo. También te puedo ayudar a agendar una llamada virtual conmigo.",
     "placeholder": "Escribe un mensaje…",
