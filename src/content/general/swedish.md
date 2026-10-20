@@ -17,7 +17,7 @@
   "about": "Om webbplatsen",
   "text-about": [
     "Jag byggde den här webbplatsen med ramverket Astro och publicerar den som statiska sidor på GitHub Pages. Innehåll och översättningar ligger i Markdown-filer och renderas via Astro Content Collections. Designen är medvetet minimalistisk: fast typografi, rena layouter och språkspecifika sökvägar, så att sidorna laddar snabbt, förblir tillgängliga och är lätta att underhålla.",
-    "Webbplatsen har också en virtuell Juan Pablo. Agenten svarar utifrån hans erfarenhet, projekt, filosofiska citat och en guide till hur han tänker. Den körs på Google Gemini Flash, med Flash-Lite som reserv, via en Cloudflare Worker. Ett Google Apps Script kontrollerar varje förfrågan, mejlar honom en sammanfattning och ger en Calendly-länk. Allt körs på gratistjänster."
+    "Webbplatsen har också en virtuell Juan Pablo. Agenten svarar utifrån hans erfarenhet, projekt, filosofiska citat och en guide till hur han tänker. Den körs på Google Gemini Flash, med Flash-Lite som reserv, via en Cloudflare Worker. Ett Google Apps Script kontrollerar varje förfrågan, mejlar honom en sammanfattning och ger en Calendly-länk."
   ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",
