@@ -17,7 +17,7 @@
   "about": "Acerca del sitio",
   "text-about": [
     "Construí este sitio web con el framework Astro y lo publico como páginas estáticas en GitHub Pages. El contenido y las traducciones están en archivos Markdown y se renderizan mediante Astro Content Collections. El diseño es intencionalmente minimalista: tipografía fija, layouts limpios y rutas por idioma, para que las páginas carguen rápido, sean accesibles y fáciles de mantener.",
-    "El sitio también incluye una representación virtual de mí. El agente responde a partir de mi experiencia y mis proyectos, una colección de citas filosóficas y una guía escrita sobre cómo pienso. Funciona con Google Gemini Flash, con Flash-Lite de respaldo, a través de un Cloudflare Worker. También puede agendar llamadas: un Google Apps Script verifica la solicitud y me envía por correo los datos del visitante con un resumen, y el visitante recibe un enlace de Calendly para elegir un horario. Todo funciona en planes gratuitos."
+    "El sitio también incluye un Juan Pablo virtual. El agente responde desde su experiencia, sus proyectos, citas filosóficas y una guía de cómo piensa. Funciona con Google Gemini Flash, con Flash-Lite de respaldo, en un Cloudflare Worker. Un Google Apps Script revisa cada solicitud, le envía un resumen y ofrece un enlace de Calendly. Todo funciona en planes gratuitos."
   ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",

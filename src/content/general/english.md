@@ -17,7 +17,7 @@
   "about": "About the site",
   "text-about": [
     "I built this website with the Astro framework and publish it as static pages on GitHub Pages. Content and translations live in Markdown files and are rendered through Astro Content Collections. The design is intentionally minimalist: fixed typography, clean layouts and language-specific routes, so pages load fast, stay accessible and are easy to maintain.",
-    "The site also includes a virtual representation of me. The agent answers based on my experience and projects, a collection of philosophical quotes, and a written guide to how I think. It runs on Google Gemini Flash, with Flash-Lite as a backup, through a Cloudflare Worker. It can also schedule calls: a Google Apps Script verifies the request and emails me the visitor's details with a summary, and the visitor gets a Calendly link to pick a time. Everything runs on free tiers."
+    "The site also includes a virtual Juan Pablo. The agent answers from his experience, projects, philosophical quotes and a guide to how he thinks. It runs on Google Gemini Flash, with Flash-Lite as backup, through a Cloudflare Worker. A Google Apps Script checks each request, emails him a summary and offers a Calendly link. Everything runs on free tiers."
   ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",

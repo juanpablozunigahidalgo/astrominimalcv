@@ -17,7 +17,7 @@
   "about": "Circa locum",
   "text-about": [
     "Hunc situm interretialem systemate Astro aedificavi et ut paginas staticas in GitHub Pages edo. Argumentum et interpretationes in scriniis Markdown continentur et per Astro Content Collections redduntur. Forma consulto simplex est: typis certis, dispositionibus puris itineribusque pro linguis propriis, ut paginae celeriter onerentur, faciles aditu sint ac leviter colantur.",
-    "Situs etiam imaginem mei virtualem continet. Agens respondet ex experientia et operibus meis, ex collectione sententiarum philosophicarum et ex norma scripta de modo quo cogito. Per Google Gemini Flash currit, Flash-Lite subsidiario, per Cloudflare Worker. Colloquia quoque constituere potest: Google Apps Script petitionem probat et mihi per litteras electronicas singula visitatoris cum summario mittit, visitator autem vinculum Calendly accipit ut tempus eligat. Omnia in gradibus gratuitis currunt."
+    "Situs etiam Ioannem Paulum virtualem continet. Agens respondet ex experientia, operibus, sententiis philosophicis et norma de modo quo cogitat. Per Google Gemini Flash currit, Flash-Lite subsidiario, per Cloudflare Worker. Google Apps Script petitionem probat, ei summa mittit et vinculum Calendly offert. Omnia gratis currunt."
   ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",
