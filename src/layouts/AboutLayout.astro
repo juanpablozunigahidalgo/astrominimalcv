@@ -79,4 +79,12 @@ const { title } = Astro.props;
     hyphens: auto;
     margin: 0;
   }
+  .about-only-layout p + p {
+    margin-top: calc(1.165em + 2px);
+  }
+  @media (max-width: 768px) {
+    .about-only-layout p + p {
+      margin-top: calc(1.165em + 2px + 0.5rem);
+    }
+  }
 </style>

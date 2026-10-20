@@ -15,7 +15,10 @@
     "ended": "Samtalet är avslutat"
   },
   "about": "Om webbplatsen",
-  "text-about": "Jag har byggt den här webbplatsen med ramverket Astro. Den är publicerad som en statisk sida på GitHub. Innehållet och översättningarna hanteras via Markdown-filer och renderas med hjälp av Astro Content Collections. Designen är medvetet minimalistisk — med fast typografi, rena layouter och språkspecifika sökvägar — för att sidorna ska ladda snabbt, vara tillgängliga och lätta att underhålla. Om du vill skapa en liknande sida är det bara att besöka min GitHub och använda koden. Öppen källkod.",
+  "text-about": [
+    "Jag byggde den här webbplatsen med ramverket Astro och publicerar den som statiska sidor på GitHub Pages. Innehåll och översättningar ligger i Markdown-filer och renderas via Astro Content Collections. Designen är medvetet minimalistisk: fast typografi, rena layouter och språkspecifika sökvägar, så att sidorna laddar snabbt, förblir tillgängliga och är lätta att underhålla.",
+    "Webbplatsen innehåller också en virtuell version av mig. Agenten svarar utifrån min erfarenhet och mina projekt, en samling filosofiska citat och en skriven guide om hur jag tänker. Den körs på Google Gemini Flash, med Flash-Lite som reserv, genom en Cloudflare Worker. Den kan också boka samtal: ett Google Apps Script kontrollerar förfrågan och mejlar mig besökarens uppgifter med en sammanfattning, och besökaren får en Calendly-länk för att välja en tid. Allt körs på gratistjänster."
+  ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",
     "phone": "+46729971641",

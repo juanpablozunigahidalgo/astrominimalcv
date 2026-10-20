@@ -15,7 +15,10 @@
     "ended": "Conversación cerrada"
   },
   "about": "Acerca del sitio",
-  "text-about": "He construido este sitio web usando el framework Astro. Esta publicado como página estática en GitHub. El contenido y las traducciones se encuentran en archivos Markdown MD y se renderizan mediante Astro Content Collections. El diseño es intencionalmente minimalista — tipografía fija, layouts limpios y rutas específicas por idioma — para que las páginas carguen rápido, sean accesibles y fáciles de mantener. Si quieres un sitio similar, visita mi GitHub y copia el código. Open‑source.",
+  "text-about": [
+    "Construí este sitio web con el framework Astro y lo publico como páginas estáticas en GitHub Pages. El contenido y las traducciones están en archivos Markdown y se renderizan mediante Astro Content Collections. El diseño es intencionalmente minimalista: tipografía fija, layouts limpios y rutas por idioma, para que las páginas carguen rápido, sean accesibles y fáciles de mantener.",
+    "El sitio también incluye una representación virtual de mí. El agente responde a partir de mi experiencia y mis proyectos, una colección de citas filosóficas y una guía escrita sobre cómo pienso. Funciona con Google Gemini Flash, con Flash-Lite de respaldo, a través de un Cloudflare Worker. También puede agendar llamadas: un Google Apps Script verifica la solicitud y me envía por correo los datos del visitante con un resumen, y el visitante recibe un enlace de Calendly para elegir un horario. Todo funciona en planes gratuitos."
+  ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",
     "phone": "+46729971641",

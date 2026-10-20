@@ -15,7 +15,10 @@
     "ended": "Colloquium clausum"
   },
   "about": "Circa locum",
-  "text-about": "Hunc situm interretialem systemate Astro aedificavi. In GitHub ut pagina statica editus est. Argumentum et interpretationes in scriniis Markdown continentur et per Astro Content Collections redduntur. Forma consulto simplex est — typis certis, dispositionibus puris, itineribusque pro linguis propriis — ut paginae celeriter onerentur, faciles aditu sint, ac leviter colantur. Si similem situm cupis, GitHub meum adi et codicem exscribe. Fons apertus.",
+  "text-about": [
+    "Hunc situm interretialem systemate Astro aedificavi et ut paginas staticas in GitHub Pages edo. Argumentum et interpretationes in scriniis Markdown continentur et per Astro Content Collections redduntur. Forma consulto simplex est: typis certis, dispositionibus puris itineribusque pro linguis propriis, ut paginae celeriter onerentur, faciles aditu sint ac leviter colantur.",
+    "Situs etiam imaginem mei virtualem continet. Agens respondet ex experientia et operibus meis, ex collectione sententiarum philosophicarum et ex norma scripta de modo quo cogito. Per Google Gemini Flash currit, Flash-Lite subsidiario, per Cloudflare Worker. Colloquia quoque constituere potest: Google Apps Script petitionem probat et mihi per litteras electronicas singula visitatoris cum summario mittit, visitator autem vinculum Calendly accipit ut tempus eligat. Omnia in gradibus gratuitis currunt."
+  ],
   "contactdata": {
     "email": "juanpablo.zunigah@gmail.com",
     "phone": "+46729971641",

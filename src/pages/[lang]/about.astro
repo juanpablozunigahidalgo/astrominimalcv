@@ -12,10 +12,11 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const textAbout = page.data["text-about"];
+const paragraphs = Array.isArray(textAbout) ? textAbout : [textAbout];
 ---
 
 <AboutLayout title="About">
-  <p>{textAbout}</p>
+  {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
 </AboutLayout>
 
 <style></style>
