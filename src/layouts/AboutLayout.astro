@@ -70,7 +70,6 @@ const { title } = Astro.props;
     .about-only-layout {
       width: auto;
       margin: calc(99px - 0.25rem) 44px 60px;
-      line-height: calc(1.165em + 2px + 0.5rem);
     }
   }
   .about-only-layout p {
@@ -81,10 +80,5 @@ const { title } = Astro.props;
   }
   .about-only-layout p + p {
     margin-top: calc(1.165em + 2px);
-  }
-  @media (max-width: 768px) {
-    .about-only-layout p + p {
-      margin-top: calc(1.165em + 2px + 0.5rem);
-    }
   }
 </style>
